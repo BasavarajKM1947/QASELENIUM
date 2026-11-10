@@ -23,6 +23,11 @@ driver.manage().window().maximize();
 
 System.out.println("Manohar.K.B first Maven Project");
 
+System.out.println("Manohar.K.B first Jenkins CICD Project");
+
+System.out.println("Manohar.K.B first Complete Automation That's Great");
+
+
         } finally {
                Thread.sleep(3000);
             driver.quit();
