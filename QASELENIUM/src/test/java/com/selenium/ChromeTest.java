@@ -27,6 +27,12 @@ System.out.println("Manohar.K.B first Jenkins CICD Project");
 
 System.out.println("Manohar.K.B first Complete Automation That's Great");
 
+System.out.println("Manohar.K.B first Complete Automation done Amazing");
+
+System.out.println("Keep moving AI is Amazing ");
+
+System.out.println("AI OPENAI SAM ALTMAN !!!!! ");
+
 
         } finally {
                Thread.sleep(3000);
