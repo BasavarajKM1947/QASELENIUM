@@ -1,55 +1,42 @@
 
 pipeline {
-
     agent any
-
-    tools {
-        jdk 'JDK21'
-        maven 'Maven3'
-    }
-
-    triggers {
-        pollSCM('H/5 * * * *')
-    }
 
     stages {
 
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
                 checkout scm
             }
         }
 
-        stage('Maven Clean') {
+        stage('Check Project Structure') {
             steps {
-                bat 'mvn clean'
+                bat 'dir'
+                bat 'dir QASELENIUM'
             }
         }
 
-        stage('Compile Project') {
+        stage('Build Maven Project') {
             steps {
-                bat 'mvn compile'
+                dir('QASELENIUM') {
+                    bat 'mvn clean'
+                }
             }
         }
 
         stage('Execute Selenium Tests') {
             steps {
-                bat 'mvn -B test'
+                dir('QASELENIUM') {
+                    bat 'mvn test'
+                }
             }
         }
     }
 
     post {
         always {
-            junit '**/target/surefire-reports/*.xml'
-        }
-
-        success {
-            echo 'Selenium automation execution successful!'
-        }
-
-        failure {
-            echo 'Selenium automation execution failed!'
+            echo 'Build execution completed'
         }
     }
 }
